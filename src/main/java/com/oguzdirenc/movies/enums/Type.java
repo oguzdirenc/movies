@@ -21,7 +21,9 @@ public enum Type {
     HISTORY(9,"Tarih"),
     MYSTERY(10,"Gizem"),
     ROMANCE(11,"Romantik"),
-    SCIENCE(12,"Bilim-Kurgu");
+    SCIENCE(12,"Bilim-Kurgu"),
+    ANIMATION(13,"Animasyon");
+
 
     private int value;
     private String description;
