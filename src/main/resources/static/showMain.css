@@ -1,0 +1,67 @@
+body{
+    background-color: #f3f7f7 !important;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+.show-image-size{
+    width: 275px !important;
+    height: 400px !important;
+    margin: 5px;
+}
+.body-margin{
+    margin-top: 10px;
+    margin-left: 10px !important;
+}
+.my-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+.my-comment{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.delete-button{
+    margin-left: 525px;
+}
+.shadow-card{
+    box-shadow: 9px 9px 7px 1px rgba(0,0,0,0.47);
+    background-color:rgba(244,241,234,0.5) !important;
+}
+.my-form-text{
+    margin-top: 5px !important;
+}
+.add-shadow-card{
+    box-shadow: 9px 9px 7px 1px rgba(0,0,0,0.47);
+    background-color:rgba(244,241,234,0.5) !important;
+    padding-bottom: 20px!important;
+}
+.my-form-size{
+    margin: 10px !important;
+}
+.my-submit-button{
+    margin-left: 530px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.my-add-header{
+    margin-top: 10px;
+    margin-left: 20px !important;
+    font-size:x-large;
+}
+.my-alert{
+    margin-bottom: 0px !important;
+    margin-top: 0px!important;
+    width: 80%;
+    margin-left:10%!important;
+    height: 25px!important;
+    display: flex;
+    align-items: center;
+}
+.my-comment-left{
+    margin-left: 10px!important;
+}
+.to-add{
+    font-size: small;
+}
