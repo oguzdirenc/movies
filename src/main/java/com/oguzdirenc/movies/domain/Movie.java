@@ -24,7 +24,6 @@ public class Movie {
 
     private String movieName;
     private double imdb;
-    private LocalDate movieUpdateDate;
     private Long releaseDate;
 
     @Lob
@@ -32,6 +31,7 @@ public class Movie {
 
     private Date createdAt;
     private Date updatedAt;
+
 
     @PrePersist
     protected void onCreate() {this.createdAt = new Date();}
@@ -63,7 +63,6 @@ public class Movie {
     public Movie(UUID movieId,
                  String movieName,
                  double imdb,
-                 LocalDate movieUpdateDate,
                  Long releaseDate,
                  String thumbnail,
                  Date createdAt,
@@ -75,7 +74,6 @@ public class Movie {
         this.movieId = movieId;
         this.movieName = movieName;
         this.imdb = imdb;
-        this.movieUpdateDate = movieUpdateDate;
         this.releaseDate = releaseDate;
         this.thumbnail = thumbnail;
         this.createdAt = createdAt;
@@ -85,4 +83,9 @@ public class Movie {
         this.directorSet = directorSet;
         this.categorySet = categorySet;
     }
+
+    public Movie() {
+
+    }
+
 }
