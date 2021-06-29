@@ -17,6 +17,11 @@ public class CategoryServiceImpl implements CategoryService {
         return movieCategoryRepository.findAll();
     }
 
+    @Override
+    public MovieCategory getCategoryByValue(Integer value) {
+        return movieCategoryRepository.findByValue(value);
+    }
+
     public CategoryServiceImpl(MovieCategoryRepository movieCategoryRepository) {
         this.movieCategoryRepository = movieCategoryRepository;
     }

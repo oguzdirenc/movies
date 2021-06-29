@@ -1,0 +1,47 @@
+body{
+    background-color: #f3f7f7 !important;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+.my-movie-card{
+    margin-left: 50px;
+}
+.top5-list-font{
+    font-family: "Times New Roman";
+}
+.accordion-item-font{
+    font-family: "Times New Roman";
+}
+.movie-header{
+    margin-top: 9px;
+}
+.my-card-image{
+    width:170px ;
+    height: 270px;
+    margin: 5px;
+}
+.my-list-bg {
+    margin-top: 11px !important;
+}
+.header{
+    margin-left: 2px;
+    font-size:large;
+    text-decoration: underline;
+}
+.my-card-margin{
+    margin-top: 10px !important;
+    margin-bottom: 15px; !important;
+    box-shadow: 7px 7px 5px 1px rgba(0,0,0,0.47);
+}
+.my-card-margin:hover{
+    cursor: pointer;
+    opacity: 0.9;
+    transform: translateY(-1%);
+}
+.my-card-bg{
+    background-color: rgba(244,241,234,0.5) !important;
+}
+.my-link-bg{
+    background-color: #f3f7f7 !important;
+    margin-bottom: 2px;
+}

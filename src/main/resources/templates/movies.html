@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link href="/navbar.css" rel="stylesheet" type="text/css" th:href="@{/navbar.css}">
+    <link href="/movieMain.css" rel="stylesheet" type="text/css" th:href="@{/movieMain.css}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+          crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>MOVİES</title>
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3 my-list-bg ">
+            <h3 class="header">Categories</h3>
+
+            <div class="accordion" id="accordionExample">
+
+                <div class="accordion-item" th:each="type :${Type}">
+
+                    <h2 class="accordion-header" id="headingTwo">
+
+                        <button class="accordion-button collapsed accordion-item-font my-card-bg" type="button" data-bs-toggle="collapse"
+                                th:data-bs-target="'#'+${type.description}" aria-expanded="false" aria-controls="collapseTwo" th:text="${type.description}">
+                            Accordion Item #2
+                        </button>
+
+                    </h2>
+                    <div th:id="${type.description}" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#accordionExample" >
+
+                        <div class="accordion-body my-card-bg">
+
+                            <div class="list-group " th:each="movie :${type.getMovieCategorySet()}">
+                                <a th:href="'/book/show/' + ${movie.movieId}" class="fas fa-film
+                                list-group-item list-group-item-action accordion-item-font my-link-bg"
+                                   th:text="' '+${movie.movieName}"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6  my-movie-card " style="max-width: 540px;">
+            <h3 class="header movie-header">MOVIES</h3>
+            <tr th:each="movie : ${Movies}">
+
+                <div class="g-0 card my-card-margin my-card-bg">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <img class="my-card-image" th:src="'data:image/jpeg;base64,'+${movie.thumbnail}" alt="...">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${movie.movieName}"></h5>
+                                <p class="card-text"><small class="text-muted" th:text="${movie.imdb}"></small></p>
+                                <p class="card-text" th:each="comment : ${movie.getCommentList()}" th:text="${comment.description}"></p>
+                                <p class="card-text"><small class="text-muted" th:each="actor : ${movie.getActorSet()}"
+                                                            th:text="${actor.actorName}"></small></p>
+                                <a th:href="'/movie/show/' + ${movie.movieId}">more >></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </tr>
+
+        </div>
+
+        <div class="list-group col-md-3 my-movie-card my-list-bg " >
+            <h3 class="header ">Top 5 Movies</h3>
+            <tr th:each="topMovie : ${Top5List}">
+                <a th:href="'/movie/show/' + ${topMovie.movieId}" class="list-group-item my-card-bg fas
+                fa-film
+                top5-list-font list-group-item-action " th:text="' '+${topMovie.movieName}"></a>
+            </tr>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+</html>
