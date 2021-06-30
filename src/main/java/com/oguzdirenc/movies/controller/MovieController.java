@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/api/movie")
@@ -44,6 +45,12 @@ public class MovieController {
             movieService.saveMovie(movieCommand,multipartFile);
             return "index";
 
+    }
+
+    @GetMapping("/show/{id}")
+    public String showById(@PathVariable UUID id, Model model){
+        model.addAttribute("movie",movieService.getMovieById(id));
+        return "show";
     }
 
     public MovieController(MovieService movieService, CategoryService categoryService, DirectorService directorService) {

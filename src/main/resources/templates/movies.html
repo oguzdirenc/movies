@@ -44,7 +44,7 @@
                         <div class="accordion-body my-card-bg">
 
                             <div class="list-group " th:each="movie :${type.getMovieCategorySet()}">
-                                <a th:href="'/book/show/' + ${movie.movieId}" class="fas fa-film
+                                <a th:href="'show/' + ${movie.movieId}" class="fas fa-film
                                 list-group-item list-group-item-action accordion-item-font my-link-bg"
                                    th:text="' '+${movie.movieName}"></a>
                             </div>
@@ -74,7 +74,7 @@
                                 <p class="card-text" th:each="comment : ${movie.getCommentList()}" th:text="${comment.description}"></p>
                                 <p class="card-text"><small class="text-muted" th:each="actor : ${movie.getActorSet()}"
                                                             th:text="${actor.actorName}"></small></p>
-                                <a th:href="'/movie/show/' + ${movie.movieId}">more >></a>
+                                <a th:href="'show/' + ${movie.movieId}">more >></a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
         <div class="list-group col-md-3 my-movie-card my-list-bg " >
             <h3 class="header ">Top 5 Movies</h3>
             <tr th:each="topMovie : ${Top5List}">
-                <a th:href="'/movie/show/' + ${topMovie.movieId}" class="list-group-item my-card-bg fas
+                <a th:href="'/api/movie/show/' + ${topMovie.movieId}" class="list-group-item my-card-bg fas
                 fa-film
                 top5-list-font list-group-item-action " th:text="' '+${topMovie.movieName}"></a>
             </tr>

@@ -14,4 +14,5 @@ public interface MovieService {
     Movie getMovieById(UUID movieId);
     List<Movie> getAllMovies();
     List<Movie> top5Movie();
+
 }
