@@ -14,7 +14,7 @@
           crossorigin="anonymous">
 
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Film</title>
 </head>
 <body>
 
@@ -33,6 +33,7 @@
                         <div class="card-body body-margin">
                             <h2 class="card-title" th:text="${movie.movieName}" >Card title</h2>
                             <p class="card-text" th:text="'IMDB : ' + ${movie.imdb}"></p>
+                            <p class="card-text" th:text="'Gösterim tarihi : ' + ${releaseDate}"></p>
                             <p class="card-text" >Actors : </p>
                             <tr th:each="actor : ${movie.actorSet}">
                                 <div class="row">
@@ -44,7 +45,7 @@
                                     </div>
                                 </div>
                             </tr>
-                            <p class="card-text" >Director : </p>
+                            <p class="card-text" >Yönetmen : </p>
                             <tr th:each="director : ${movie.directorSet}">
                                 <div class="row">
                                     <div class="col-md-1">
@@ -59,17 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="my-comment">Comments:</h4>
-                <tr th:each="comment : ${movie.commentList}">
-                    <div class="row">
-                        <div class="col-md-1">
-                            <span class="my-comment-left material-icons">arrow_right_alt</span>
-                        </div>
-                        <div class="col">
-                            <p class="card-text" th:text="${comment.description}"></p>
-                        </div>
-                    </div>
-                </tr>
+
 
                 <a th:href="'/movie/delete/'+${movie.movieId}" class="delete-button">Delete movie</a>
 

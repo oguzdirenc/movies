@@ -12,4 +12,11 @@ import java.util.UUID;
 public interface MovieRepository extends JpaRepository<Movie, UUID> {
     @Query("SELECT x from Movie x order by x.imdb")
     List<Movie> top5Movie();
+
+    @Query("select x from Movie x order by x.releaseDate desc ")
+    List<Movie> newestMovies();
+
+    @Query("select x from Movie x order by x.releaseDate  ")
+    List<Movie> oldestMovies();
+
 }

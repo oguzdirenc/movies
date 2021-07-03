@@ -8,5 +8,5 @@ public interface CategoryService {
 
     List<MovieCategory> getAllCategories();
     MovieCategory getCategoryByValue(Integer value);
-
+    List<MovieCategory> getNotEmptyCategories();
 }

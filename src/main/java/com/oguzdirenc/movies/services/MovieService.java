@@ -14,5 +14,7 @@ public interface MovieService {
     Movie getMovieById(UUID movieId);
     List<Movie> getAllMovies();
     List<Movie> top5Movie();
-
+    List<Movie> getNewestMovies();
+    List<Movie> getOldestMovies();
+    String getReleaseDateByMovieId(UUID movieId);
 }

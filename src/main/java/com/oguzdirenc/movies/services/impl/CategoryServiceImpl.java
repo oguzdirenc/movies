@@ -14,12 +14,19 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<MovieCategory> getAllCategories() {
-        return movieCategoryRepository.getMovieCategoriesOrderByName();
+        return movieCategoryRepository.findAll();
     }
+
+
 
     @Override
     public MovieCategory getCategoryByValue(Integer value) {
         return movieCategoryRepository.findByValue(value);
+    }
+
+    @Override
+    public List<MovieCategory> getNotEmptyCategories() {
+        return movieCategoryRepository.getMovieCategoriesOrderByName();
     }
 
     public CategoryServiceImpl(MovieCategoryRepository movieCategoryRepository) {

@@ -100,6 +100,7 @@
 
 
                     <button type="submit" class="btn btn-secondary my-submit-button">Submit</button>
+                    <div class="alert alert-danger my-alert" role="alert" th:each="error : ${errors}" th:text="${error}"></div>
 
 
                 </form>

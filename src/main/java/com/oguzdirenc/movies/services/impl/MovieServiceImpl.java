@@ -89,6 +89,24 @@ public class MovieServiceImpl implements MovieService {
 
     }
 
+    @Override
+    public List<Movie> getNewestMovies() {
+        return movieRepository.newestMovies();
+    }
+
+    @Override
+    public List<Movie> getOldestMovies() {
+        return movieRepository.oldestMovies();
+    }
+
+    @Override
+    public String getReleaseDateByMovieId(UUID movieId) {
+        Movie movie = movieRepository.getById(movieId);
+        Date date = new Date(movie.getReleaseDate());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        return dateFormat.format(date);
+    }
+
     public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository,@Lazy ActorService actorService,@Lazy DirectorService directorService) {
         this.categoryService = categoryService;
         this.movieRepository = movieRepository;

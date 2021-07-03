@@ -26,7 +26,7 @@
     <div class="row">
 
         <div class="col-md-3 my-list-bg ">
-            <h3 class="header">Categories</h3>
+            <h3 class="header">Kategoriler</h3>
 
             <div class="accordion" id="accordionExample">
 
@@ -61,7 +61,13 @@
 
 
         <div class="col-md-6  my-movie-card " style="max-width: 540px;">
-            <h3 class="header movie-header">MOVIES</h3>
+            <h3 class="header movie-header">FİLMLER</h3>
+            <a href="/api/movie/newest">
+            <button type="button"  class="btn btn-secondary btn-sm">Yeniden eskiye doğru sırala</button>
+            </a>
+            <a href="/api/movie/oldest">
+            <button type="button" class="btn btn-secondary btn-sm">Eskiden yeniye doğru sırala</button>
+            </a>
             <tr th:each="movie : ${Movies}">
 
                 <div class="g-0 card my-card-margin my-card-bg">
@@ -87,7 +93,9 @@
         </div>
 
         <div class="list-group col-md-3 my-movie-card my-list-bg " >
-            <h3 class="header ">Top 5 Movies</h3>
+
+
+            <h3 class="header ">En iyi 5 film</h3>
             <tr th:each="topMovie : ${Top5List}">
                 <a th:href="'/api/movie/show/' + ${topMovie.movieId}" class="list-group-item my-card-bg fas
                 fa-film
