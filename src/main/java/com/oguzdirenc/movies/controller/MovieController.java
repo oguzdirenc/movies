@@ -43,7 +43,7 @@ public class MovieController {
                            @RequestParam("file") MultipartFile multipartFile) throws IOException {
 
             movieService.saveMovie(movieCommand,multipartFile);
-            return "index";
+            return "redirect:/movies";
 
     }
 
