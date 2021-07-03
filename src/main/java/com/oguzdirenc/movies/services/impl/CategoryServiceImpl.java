@@ -14,7 +14,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<MovieCategory> getAllCategories() {
-        return movieCategoryRepository.findAll();
+        return movieCategoryRepository.getMovieCategoriesOrderByName();
     }
 
     @Override

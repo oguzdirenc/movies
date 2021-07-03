@@ -12,6 +12,7 @@ import java.util.UUID;
 public interface DirectorRepository extends JpaRepository<Director, UUID> {
     boolean existsByDirectorName(String directorName);
     Director findByDirectorName(String directorName);
+
     @Query("select x FROM Director x order by x.directorName")
     List<Director> getDirectorByName();
 
