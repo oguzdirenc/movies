@@ -96,6 +96,14 @@ public class MovieController {
         return "show";
     }
 
+    @RequestMapping("/delete/{id}")
+    public String deleteById(@PathVariable UUID id, Model model){
+
+        movieService.deleteById(id);
+
+        return "redirect:/api/movie/movies";
+    }
+
     public MovieController(MovieService movieService, CategoryService categoryService, DirectorService directorService, ValidationService validationService) {
         this.movieService = movieService;
         this.categoryService = categoryService;

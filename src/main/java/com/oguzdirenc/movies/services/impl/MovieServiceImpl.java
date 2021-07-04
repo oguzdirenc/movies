@@ -121,6 +121,11 @@ public class MovieServiceImpl implements MovieService {
         return searchResults;
     }
 
+    @Override
+    public void deleteById(UUID id) {
+        movieRepository.deleteById(id);
+    }
+
     public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository, @Lazy ActorService actorService, @Lazy DirectorService directorService, ActorRepository actorRepository, DirectorRepository directorRepository) {
         this.categoryService = categoryService;
         this.movieRepository = movieRepository;
