@@ -8,7 +8,9 @@ import com.oguzdirenc.movies.services.ActorService;
 import com.oguzdirenc.movies.services.MovieService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -41,6 +43,16 @@ public class ActorServiceImpl implements ActorService {
 
             }
         }
+    }
+
+    @Override
+    public List<Movie> getActorsMovies(String search) {
+        List<Actor> actorList = actorRepository.movieSearchByActorName(search);
+        List<Movie> movieList = new ArrayList<>();
+        for(Actor actor:actorList){
+            movieList.addAll(actor.getMovieSet());
+        }
+        return movieList;
     }
 
 

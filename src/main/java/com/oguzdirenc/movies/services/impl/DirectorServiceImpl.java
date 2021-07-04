@@ -8,6 +8,7 @@ import com.oguzdirenc.movies.services.DirectorService;
 import com.oguzdirenc.movies.services.MovieService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
@@ -45,6 +46,16 @@ public class DirectorServiceImpl implements DirectorService {
     @Override
     public List<Director> getAllDirectorsOrderByName() {
         return directorRepository.getDirectorByName();
+    }
+
+    @Override
+    public List<Movie> getDirectorMovies(String search) {
+        List<Director> directorList = directorRepository.movieSearchByDirectorName(search);
+        List<Movie> movieList = new ArrayList<>();
+        for(Director director:directorList){
+            movieList.addAll(director.getMovieSet());
+        }
+        return movieList;
     }
 
     public DirectorServiceImpl(MovieService movieService, DirectorRepository directorRepository, MovieRepository movieRepository) {

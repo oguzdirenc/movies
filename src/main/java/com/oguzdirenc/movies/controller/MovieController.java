@@ -1,6 +1,7 @@
 package com.oguzdirenc.movies.controller;
 
 import com.oguzdirenc.movies.command.MovieCommand;
+import com.oguzdirenc.movies.command.SearchCommand;
 import com.oguzdirenc.movies.services.CategoryService;
 import com.oguzdirenc.movies.services.DirectorService;
 import com.oguzdirenc.movies.services.MovieService;
@@ -30,6 +31,7 @@ public class MovieController {
         model.addAttribute("Director",directorService.getAllDirectorsOrderByName());
         model.addAttribute("Top5List",movieService.top5Movie());
         model.addAttribute("Type",categoryService.getNotEmptyCategories());
+        model.addAttribute("Search",new SearchCommand());
 
         return "movies";
     }
@@ -40,6 +42,7 @@ public class MovieController {
         model.addAttribute("Director",directorService.getAllDirectorsOrderByName());
         model.addAttribute("Top5List",movieService.top5Movie());
         model.addAttribute("Type",categoryService.getNotEmptyCategories());
+        model.addAttribute("Search",new SearchCommand());
         return "movies";
     }
 
@@ -49,6 +52,20 @@ public class MovieController {
         model.addAttribute("Director",directorService.getAllDirectorsOrderByName());
         model.addAttribute("Top5List",movieService.top5Movie());
         model.addAttribute("Type",categoryService.getNotEmptyCategories());
+        model.addAttribute("Search",new SearchCommand());
+
+        return "movies";
+    }
+
+
+    @PostMapping("/search")
+    public String searchMovie(Model model, SearchCommand searchCommand){
+        model.addAttribute("Movies",movieService.getSearchResults(searchCommand.getSearch()));
+        model.addAttribute("Director",directorService.getAllDirectorsOrderByName());
+        model.addAttribute("Top5List",movieService.top5Movie());
+        model.addAttribute("Type",categoryService.getNotEmptyCategories());
+        model.addAttribute("Search",new SearchCommand());
+
         return "movies";
     }
 
@@ -70,7 +87,6 @@ public class MovieController {
             }
             movieService.saveMovie(movieCommand,multipartFile);
             return "redirect:/api/movie/movies";
-
     }
 
     @GetMapping("/show/{id}")

@@ -3,6 +3,8 @@ package com.oguzdirenc.movies.services.impl;
 import com.oguzdirenc.movies.command.MovieCommand;
 import com.oguzdirenc.movies.domain.Movie;
 import com.oguzdirenc.movies.domain.MovieCategory;
+import com.oguzdirenc.movies.repositories.ActorRepository;
+import com.oguzdirenc.movies.repositories.DirectorRepository;
 import com.oguzdirenc.movies.repositories.MovieRepository;
 import com.oguzdirenc.movies.services.ActorService;
 import com.oguzdirenc.movies.services.CategoryService;
@@ -24,6 +26,8 @@ public class MovieServiceImpl implements MovieService {
     private final MovieRepository movieRepository;
     private final ActorService actorService;
     private final DirectorService directorService;
+    private final ActorRepository actorRepository;
+    private final DirectorRepository directorRepository;
 
 
     @Override
@@ -107,10 +111,22 @@ public class MovieServiceImpl implements MovieService {
         return dateFormat.format(date);
     }
 
-    public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository,@Lazy ActorService actorService,@Lazy DirectorService directorService) {
+    @Override
+    public List<Movie> getSearchResults(String search) {
+        List<Movie> searchResults = new ArrayList<>();
+        searchResults.addAll(movieRepository.movieSearchByMovieName(search));
+        searchResults.addAll(actorService.getActorsMovies(search));
+        searchResults.addAll(directorService.getDirectorMovies(search));
+
+        return searchResults;
+    }
+
+    public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository, @Lazy ActorService actorService, @Lazy DirectorService directorService, ActorRepository actorRepository, DirectorRepository directorRepository) {
         this.categoryService = categoryService;
         this.movieRepository = movieRepository;
         this.actorService = actorService;
         this.directorService = directorService;
+        this.actorRepository = actorRepository;
+        this.directorRepository = directorRepository;
     }
 }

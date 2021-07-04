@@ -1,6 +1,7 @@
 package com.oguzdirenc.movies.repositories;
 
 import com.oguzdirenc.movies.domain.Director;
+import com.oguzdirenc.movies.domain.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,8 @@ public interface DirectorRepository extends JpaRepository<Director, UUID> {
 
     @Query("select x FROM Director x order by x.directorName")
     List<Director> getDirectorByName();
+
+    @Query("select x from Director x where x.directorName like %:search%")
+    List<Director> movieSearchByDirectorName(String search);
 
 }

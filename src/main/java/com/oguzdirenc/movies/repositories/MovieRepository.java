@@ -19,4 +19,6 @@ public interface MovieRepository extends JpaRepository<Movie, UUID> {
     @Query("select x from Movie x order by x.releaseDate  ")
     List<Movie> oldestMovies();
 
+    @Query("select x from Movie x where x.movieName like %:search%")
+    List<Movie> movieSearchByMovieName(String search);
 }

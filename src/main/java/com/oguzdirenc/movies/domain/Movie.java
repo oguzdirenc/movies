@@ -38,9 +38,6 @@ public class Movie {
     @PreUpdate
     protected void onUpdate() {this.updatedAt = new Date();}
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movie")
-    private Set<Comment> commentList = new HashSet<>();
-
     @ManyToMany
     @JoinTable(name = "movie_actor",
             joinColumns = {@JoinColumn(name = "movie_id")},
@@ -66,7 +63,7 @@ public class Movie {
                  String thumbnail,
                  Date createdAt,
                  Date updatedAt,
-                 Set<Comment> commentList,
+
                  Set<Actor> actorSet,
                  Set<Director> directorSet,
                  Set<MovieCategory> categorySet) {
@@ -77,7 +74,7 @@ public class Movie {
         this.thumbnail = thumbnail;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.commentList = commentList;
+
         this.actorSet = actorSet;
         this.directorSet = directorSet;
         this.categorySet = categorySet;

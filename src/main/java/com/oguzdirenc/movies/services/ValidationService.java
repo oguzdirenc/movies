@@ -7,5 +7,4 @@ import java.util.List;
 public interface ValidationService {
 
     List<String> getErrorList(BindingResult bindingResult);
-
 }
