@@ -22,15 +22,23 @@ public class Movie {
     private UUID movieId;
 
     private String movieName;
+
+
+
+
+
     private double imdb;
+
     private Long releaseDate;
+
+
 
     @Lob
     private String thumbnail;
 
     private Date createdAt;
     private Date updatedAt;
-
+    private String description;
 
     @PrePersist
     protected void onCreate() {this.createdAt = new Date();}
@@ -63,7 +71,7 @@ public class Movie {
                  String thumbnail,
                  Date createdAt,
                  Date updatedAt,
-
+                 String description,
                  Set<Actor> actorSet,
                  Set<Director> directorSet,
                  Set<MovieCategory> categorySet) {
@@ -74,7 +82,7 @@ public class Movie {
         this.thumbnail = thumbnail;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-
+        this.description = description;
         this.actorSet = actorSet;
         this.directorSet = directorSet;
         this.categorySet = categorySet;

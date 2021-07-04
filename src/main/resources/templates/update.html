@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link href="/navbar.css" rel="stylesheet" type="text/css" th:href="@{/navbar.css}">
+
+    <link href="/showMain.css" rel="stylesheet" type="text/css" th:href="@{/showMain.css}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Film ekle</title>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navigation"></div>
+
+<div class="container my-container ">
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card add-shadow-card">
+                <h2 CLASS="my-add-header">Kaydı düzenle</h2>
+                <form  th:object="${movie}"  th:action="@{/api/movie/addMovie}"  method="post" enctype="multipart/form-data" >
+
+
+                    <div class="row my-form-size">
+                        <div class="my-form-text col-md-3 form-group">
+                            <label >Film adı:</label>
+                        </div>
+                        <div class=" col-md-7 form-group">
+
+                            <input type="text" class="form-control" th:field="*{movieName}"/>
+                        </div>
+                    </div>
+
+
+                    <div class="row my-form-size">
+                        <div class="my-form-text col-md-3 form-group">
+                            <label >IMDB:</label>
+                        </div>
+                        <div class=" col-md-7 form-group">
+                            <input type="text" class="form-control"  th:field="*{imdb}"/>
+                        </div>
+                    </div>
+
+                    <div class="row my-form-size">
+                        <div class="my-form-text col-md-3 form-group">
+                            <label >Açıklama:</label>
+                        </div>
+                        <div class=" col-md-7 form-group">
+                            <textarea type="text" class="form-control"  th:field="*{description}"></textarea>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-secondary my-submit-button">Submit</button>
+                    <div class="alert alert-danger my-alert" role="alert" th:each="error : ${errors}" th:text="${error}"></div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script >
+</body>
+</html>

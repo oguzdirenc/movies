@@ -35,6 +35,7 @@ public class MovieServiceImpl implements MovieService {
         Movie newMovie = Movie.builder()
                 .movieName(movieCommand.getMovieName())
                 .imdb(movieCommand.getImdb())
+                .description(movieCommand.getDescription())
                 .actorSet(new HashSet<>())
                 .categorySet(new HashSet<>())
                 .directorSet(new HashSet<>())

@@ -98,9 +98,29 @@ public class MovieController {
 
     @RequestMapping("/delete/{id}")
     public String deleteById(@PathVariable UUID id, Model model){
-
         movieService.deleteById(id);
+        return "redirect:/api/movie/movies";
+    }
 
+    @GetMapping("/update/{id}")
+    public String updateById(@PathVariable UUID id, Model model){
+        model.addAttribute("movieCommand",new MovieCommand());
+        model.addAttribute("categories",categoryService.getAllCategories());
+        model.addAttribute("movie",movieService.getMovieById(id));
+        model.addAttribute("releaseDate",movieService.getReleaseDateByMovieId(id));
+        return "update";
+    }
+
+    @PostMapping("/update")
+    public String updateMovie(@Valid @ModelAttribute MovieCommand movieCommand,
+                              BindingResult bindingResult,
+                              Model model,
+                              @RequestParam("file") MultipartFile multipartFile) throws IOException {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("errors",validationService.getErrorList(bindingResult));
+            return "update";
+        }
+        //movieService.updateMovie(movieId,movieCommand,multipartFile);
         return "redirect:/api/movie/movies";
     }
 

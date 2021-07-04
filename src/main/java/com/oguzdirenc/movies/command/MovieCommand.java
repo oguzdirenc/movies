@@ -7,8 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -22,6 +21,8 @@ public class MovieCommand {
     private double imdb;
 
     private String releaseDate;
+    private UUID movieId;
+    private String description;
 
     private Integer type;
 
