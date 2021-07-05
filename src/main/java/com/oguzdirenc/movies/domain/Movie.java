@@ -23,12 +23,8 @@ public class Movie {
 
     private String movieName;
 
-
-
-
-
+    private String language;
     private double imdb;
-
     private Long releaseDate;
 
 
@@ -66,6 +62,7 @@ public class Movie {
 
     public Movie(UUID movieId,
                  String movieName,
+                 String language,
                  double imdb,
                  Long releaseDate,
                  String thumbnail,
@@ -77,6 +74,7 @@ public class Movie {
                  Set<MovieCategory> categorySet) {
         this.movieId = movieId;
         this.movieName = movieName;
+        this.language = language;
         this.imdb = imdb;
         this.releaseDate = releaseDate;
         this.thumbnail = thumbnail;

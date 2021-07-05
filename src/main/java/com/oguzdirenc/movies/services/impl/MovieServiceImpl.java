@@ -26,9 +26,6 @@ public class MovieServiceImpl implements MovieService {
     private final MovieRepository movieRepository;
     private final ActorService actorService;
     private final DirectorService directorService;
-    private final ActorRepository actorRepository;
-    private final DirectorRepository directorRepository;
-
 
     @Override
     public void saveMovie(MovieCommand movieCommand, MultipartFile multipartFile) throws IOException {
@@ -36,6 +33,7 @@ public class MovieServiceImpl implements MovieService {
                 .movieName(movieCommand.getMovieName())
                 .imdb(movieCommand.getImdb())
                 .description(movieCommand.getDescription())
+                .language(movieCommand.getLanguage())
                 .actorSet(new HashSet<>())
                 .categorySet(new HashSet<>())
                 .directorSet(new HashSet<>())
@@ -108,7 +106,7 @@ public class MovieServiceImpl implements MovieService {
     public String getReleaseDateByMovieId(UUID movieId) {
         Movie movie = movieRepository.getById(movieId);
         Date date = new Date(movie.getReleaseDate());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(date);
     }
 
@@ -127,12 +125,10 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.deleteById(id);
     }
 
-    public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository, @Lazy ActorService actorService, @Lazy DirectorService directorService, ActorRepository actorRepository, DirectorRepository directorRepository) {
+    public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository, @Lazy ActorService actorService, @Lazy DirectorService directorService) {
         this.categoryService = categoryService;
         this.movieRepository = movieRepository;
         this.actorService = actorService;
         this.directorService = directorService;
-        this.actorRepository = actorRepository;
-        this.directorRepository = directorRepository;
     }
 }

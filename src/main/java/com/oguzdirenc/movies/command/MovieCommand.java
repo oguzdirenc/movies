@@ -20,9 +20,11 @@ public class MovieCommand {
     @Max(value = 10,message = "Imdb puanı 0-10 aralığında olmalı")
     private double imdb;
 
+    private String language;
     private String releaseDate;
     private UUID movieId;
     private String description;
+
 
     private Integer type;
 
