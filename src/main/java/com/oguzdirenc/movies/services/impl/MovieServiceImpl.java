@@ -125,6 +125,17 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.deleteById(id);
     }
 
+    @Override
+    public void updateMovie(Movie updatedMovie) {
+    Movie movie = movieRepository.getById(updatedMovie.getMovieId());
+    movie.setMovieName(updatedMovie.getMovieName());
+    movie.setImdb(updatedMovie.getImdb());
+    movie.setLanguage(updatedMovie.getLanguage());
+    movie.setDescription(updatedMovie.getDescription());
+
+    movieRepository.save(movie);
+    }
+
     public MovieServiceImpl(CategoryService categoryService, MovieRepository movieRepository, @Lazy ActorService actorService, @Lazy DirectorService directorService) {
         this.categoryService = categoryService;
         this.movieRepository = movieRepository;

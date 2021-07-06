@@ -35,7 +35,7 @@
                             <p class="card-text" th:text="'IMDB : ' + ${movie.imdb}"></p>
                             <p class="card-text" th:text="'Gösterim tarihi : ' + ${releaseDate}"></p>
                             <p class="card-text" th:text="'Dil seçenekleri : ' + ${movie.language}"></p>
-                            <p class="card-text" th:text="'Açıklama : ' + ${movie.description}"></p>
+
                             <p class="card-text" >Actors : </p>
                             <tr th:each="actor : ${movie.actorSet}">
                                 <div class="row">
@@ -58,14 +58,15 @@
                                     </div>
                                 </div>
                             </tr>
+                            <p class="card-text" th:text="'Açıklama : ' + ${movie.description}"></p>
 
                         </div>
                     </div>
                 </div>
 
 
-                <a th:href="'/api/movie/delete/'+${movie.movieId}" class="delete-button">Kaydı sil</a>
-                <a th:href="'/api/movie/update/'+${movie.movieId}" class="delete-button">Düzenle</a>
+                <a th:href="'/delete/'+${movie.movieId}" class="delete-button">Kaydı sil</a>
+                <a th:href="'/update/'+${movie.movieId}" class="delete-button">Düzenle</a>
             </div>
         </div>
     </div>

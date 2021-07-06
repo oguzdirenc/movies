@@ -2,6 +2,7 @@ package com.oguzdirenc.movies.controller;
 
 import com.oguzdirenc.movies.command.MovieCommand;
 import com.oguzdirenc.movies.command.SearchCommand;
+import com.oguzdirenc.movies.domain.Movie;
 import com.oguzdirenc.movies.services.CategoryService;
 import com.oguzdirenc.movies.services.DirectorService;
 import com.oguzdirenc.movies.services.MovieService;
@@ -17,7 +18,6 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/api/movie")
 public class MovieController {
 
     private final MovieService movieService;
@@ -25,7 +25,7 @@ public class MovieController {
     private final DirectorService directorService;
     private final ValidationService validationService;
 
-    @RequestMapping("/movies")
+    @RequestMapping({"/movies", "/index",""})
     public String getMovies(Model model){
         model.addAttribute("Movies",movieService.getAllMovies());
         model.addAttribute("Director",directorService.getAllDirectorsOrderByName());
@@ -86,7 +86,7 @@ public class MovieController {
             return "addMovie";
             }
             movieService.saveMovie(movieCommand,multipartFile);
-            return "redirect:/api/movie/movies";
+            return "redirect:/movies";
     }
 
     @GetMapping("/show/{id}")
@@ -99,12 +99,11 @@ public class MovieController {
     @RequestMapping("/delete/{id}")
     public String deleteById(@PathVariable UUID id, Model model){
         movieService.deleteById(id);
-        return "redirect:/api/movie/movies";
+        return "redirect:/movies";
     }
 
     @GetMapping("/update/{id}")
     public String updateById(@PathVariable UUID id, Model model){
-        model.addAttribute("movieCommand",new MovieCommand());
         model.addAttribute("categories",categoryService.getAllCategories());
         model.addAttribute("movie",movieService.getMovieById(id));
         model.addAttribute("releaseDate",movieService.getReleaseDateByMovieId(id));
@@ -112,16 +111,10 @@ public class MovieController {
     }
 
     @PostMapping("/update")
-    public String updateMovie(@Valid @ModelAttribute MovieCommand movieCommand,
-                              BindingResult bindingResult,
-                              Model model,
-                              @RequestParam("file") MultipartFile multipartFile) throws IOException {
-        if(bindingResult.hasErrors()){
-            model.addAttribute("errors",validationService.getErrorList(bindingResult));
-            return "update";
-        }
-        //movieService.updateMovie(movieId,movieCommand,multipartFile);
-        return "redirect:/api/movie/movies";
+    public String updateMovie(@Valid @ModelAttribute Movie updatedMovie){
+
+        movieService.updateMovie(updatedMovie);
+        return "redirect:/movies";
     }
 
     public MovieController(MovieService movieService, CategoryService categoryService, DirectorService directorService, ValidationService validationService) {

@@ -62,10 +62,10 @@
 
         <div class="col-md-6  my-movie-card " style="max-width: 540px;">
             <h3 class="header movie-header">FİLMLER</h3>
-            <a href="/api/movie/newest">
+            <a href="/newest">
             <button type="button"  class="btn btn-secondary btn-sm">Yeniden eskiye doğru sırala</button>
             </a>
-            <a href="/api/movie/oldest">
+            <a href="/oldest">
             <button type="button" class="btn btn-secondary btn-sm">Eskiden yeniye doğru sırala</button>
             </a>
             <tr th:each="movie : ${Movies}">
@@ -92,7 +92,7 @@
         </div>
 
         <div class="list-group col-md-3 my-movie-card my-list-bg " >
-            <form th:action= "@{/api/movie/search}" th:object="${Search}" method="post">
+            <form th:action= "@{/search}" th:object="${Search}" method="post">
                 <div class="row">
                     <div class="col">
                         <input type="text" class="form-control" placeholder="Ara" th:field="*{search}" >
@@ -106,7 +106,7 @@
 
             <h3 class="header ">En iyi 5 film</h3>
             <tr th:each="topMovie : ${Top5List}">
-                <a th:href="'/api/movie/show/' + ${topMovie.movieId}" class="list-group-item my-card-bg fas
+                <a th:href="'/show/' + ${topMovie.movieId}" class="list-group-item my-card-bg fas
                 fa-film
                 top5-list-font list-group-item-action " th:text="' '+${topMovie.movieName}"></a>
             </tr>

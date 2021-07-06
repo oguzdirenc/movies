@@ -23,8 +23,9 @@
         <div class="col-md-6 offset-md-3">
             <div class="card add-shadow-card">
                 <h2 CLASS="my-add-header">Kaydı düzenle</h2>
-                <form  th:object="${movie}"  th:action="@{/api/movie/addMovie}"  method="post" enctype="multipart/form-data" >
+                <form  th:object="${movie}"  th:action="@{/update}"  method="post" enctype="multipart/form-data" >
 
+                    <input type="hidden" th:field="*{movieId}">
 
                     <div class="row my-form-size">
                         <div class="my-form-text col-md-3 form-group">
@@ -48,6 +49,17 @@
 
                     <div class="row my-form-size">
                         <div class="my-form-text col-md-3 form-group">
+                            <label >Dil seçenekleri:</label>
+                        </div>
+                        <div class=" col-md-7 form-group">
+
+                            <input type="text" class="form-control" th:field="*{language}"/>
+                        </div>
+                    </div>
+
+
+                    <div class="row my-form-size">
+                        <div class="my-form-text col-md-3 form-group">
                             <label >Açıklama:</label>
                         </div>
                         <div class=" col-md-7 form-group">
@@ -56,8 +68,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-secondary my-submit-button">Submit</button>
-                    <div class="alert alert-danger my-alert" role="alert" th:each="error : ${errors}" th:text="${error}"></div>
+                    <button type="submit" class="btn btn-secondary my-submit-button">Kaydet</button>
 
 
                 </form>

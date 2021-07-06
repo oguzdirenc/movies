@@ -19,4 +19,5 @@ public interface MovieService {
     String getReleaseDateByMovieId(UUID movieId);
     List<Movie> getSearchResults(String search);
     void deleteById(UUID id);
+    void updateMovie(Movie updatedMovie);
 }

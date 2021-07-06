@@ -23,7 +23,8 @@
         <div class="col-md-6 offset-md-3">
             <div class="card add-shadow-card">
                 <h2 CLASS="my-add-header">Yeni film oluştur</h2>
-                <form  th:object="${movieCommand}"  th:action="@{/api/movie/addMovie}"  method="post" enctype="multipart/form-data" >
+                <form  th:object="${movieCommand}"  th:action="@{/addMovie}"  method="post" enctype="multipart/form-data" >
+
 
 
                     <div class="row my-form-size">
@@ -55,7 +56,7 @@
 
                     <div class="row my-form-size">
                         <div class="my-form-text col-md-3 form-group">
-                            <label >Kategory:</label>
+                            <label >Kategori:</label>
                         </div>
                         <div class=" col-md-7 form-group">
                             <select th:field="*{type}" class="form-select">

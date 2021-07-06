@@ -34,7 +34,6 @@ public class MovieCommand {
     @NotBlank(message = "Oyuncu adı giriniz")
     private String actorName;
 
-   // @NotNull(message = "Film görseli giriniz")
     private MultipartFile image;
 
     public MovieCommand() {
